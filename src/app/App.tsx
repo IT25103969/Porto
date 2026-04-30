@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useEffect } from 'react';
 =======
 >>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
