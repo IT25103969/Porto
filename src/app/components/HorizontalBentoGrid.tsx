@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-=======
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
 import { Coffee, Layers, Cpu, Box, GitBranch, Server, Code2, Radio } from 'lucide-react';
 
 interface Skill {
@@ -12,7 +9,7 @@ interface Skill {
   category: string;
   description: string;
   tools: string[];
-  Icon: typeof Coffee;
+  Icon: any;
 }
 
 const skills: Skill[] = [
@@ -21,12 +18,7 @@ const skills: Skill[] = [
     index: '01',
     title: 'Java',
     category: 'Language',
-<<<<<<< HEAD
-    description:
-      'Writing robust, object-oriented applications in Java — from console utilities to full enterprise-grade services with clean architecture.',
-=======
-    description: 'Writing robust, object-oriented applications in Java — from console utilities to full enterprise-grade services with clean architecture.',
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
+    description: 'Writing robust, object-oriented applications in Java with clean architecture.',
     tools: ['Java 17', 'Maven', 'JUnit'],
     Icon: Coffee,
   },
@@ -35,12 +27,7 @@ const skills: Skill[] = [
     index: '02',
     title: 'Spring Boot',
     category: 'Framework',
-<<<<<<< HEAD
-    description:
-      'Building production-ready REST APIs and microservices with Spring Boot — handling security, data persistence, and deployment configuration.',
-=======
-    description: 'Building production-ready REST APIs and microservices with Spring Boot — handling security, data persistence, and deployment configuration.',
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
+    description: 'Building production-ready REST APIs and microservices.',
     tools: ['Spring MVC', 'Spring Data', 'Spring Security'],
     Icon: Layers,
   },
@@ -49,12 +36,7 @@ const skills: Skill[] = [
     index: '03',
     title: 'C++',
     category: 'Language',
-<<<<<<< HEAD
-    description:
-      'Working close to the metal with C++ for performance-critical systems, embedded firmware, and algorithm implementations.',
-=======
-    description: 'Working close to the metal with C++ for performance-critical systems, embedded firmware, and algorithm implementations.',
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
+    description: 'Performance-critical systems, embedded firmware, algorithms.',
     tools: ['STL', 'CMake', 'GDB'],
     Icon: Cpu,
   },
@@ -63,12 +45,7 @@ const skills: Skill[] = [
     index: '04',
     title: 'OOP',
     category: 'Paradigm',
-<<<<<<< HEAD
-    description:
-      'Designing systems around objects — applying encapsulation, inheritance, polymorphism, and SOLID principles to write maintainable, scalable code.',
-=======
-    description: 'Designing systems around objects — applying encapsulation, inheritance, polymorphism, and SOLID principles to write maintainable, scalable code.',
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
+    description: 'SOLID principles, design patterns, scalable system design.',
     tools: ['Design Patterns', 'SOLID', 'UML'],
     Icon: Box,
   },
@@ -77,12 +54,7 @@ const skills: Skill[] = [
     index: '05',
     title: 'DSA',
     category: 'Fundamentals',
-<<<<<<< HEAD
-    description:
-      'Fluent in core data structures and algorithms — selecting the right structure for the problem and reasoning clearly about time and space complexity.',
-=======
-    description: 'Fluent in core data structures and algorithms — selecting the right structure for the problem and reasoning clearly about time and space complexity.',
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
+    description: 'Data structures and algorithms with complexity awareness.',
     tools: ['Arrays', 'Trees', 'Graphs'],
     Icon: GitBranch,
   },
@@ -91,12 +63,7 @@ const skills: Skill[] = [
     index: '06',
     title: 'Backend',
     category: 'Engineering',
-<<<<<<< HEAD
-    description:
-      'Architecting server-side systems — REST APIs, authentication flows, database design, and deployment pipelines that hold up under load.',
-=======
-    description: 'Architecting server-side systems — REST APIs, authentication flows, database design, and deployment pipelines that hold up under load.',
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
+    description: 'REST APIs, auth systems, database design, deployment.',
     tools: ['REST', 'MySQL', 'Docker'],
     Icon: Server,
   },
@@ -105,12 +72,7 @@ const skills: Skill[] = [
     index: '07',
     title: 'React',
     category: 'Frontend',
-<<<<<<< HEAD
-    description:
-      'Crafting responsive, component-driven UIs with React — managing state cleanly, composing reusable components, and wiring them to live backends.',
-=======
-    description: 'Crafting responsive, component-driven UIs with React — managing state cleanly, composing reusable components, and wiring them to live backends.',
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
+    description: 'Component-driven UIs with TypeScript and Tailwind.',
     tools: ['TypeScript', 'Tailwind', 'Vite'],
     Icon: Code2,
   },
@@ -119,49 +81,33 @@ const skills: Skill[] = [
     index: '08',
     title: 'IoT',
     category: 'Hardware',
-<<<<<<< HEAD
-    description:
-      'Bridging software and the physical world — programming microcontrollers, reading sensors, and building end-to-end embedded systems.',
-=======
-    description: 'Bridging software and the physical world — programming microcontrollers, reading sensors, and building end-to-end embedded systems.',
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
+    description: 'Embedded systems, sensors, and microcontroller programming.',
     tools: ['ESP32', 'Arduino', 'MQTT'],
     Icon: Radio,
   },
 ];
 
-<<<<<<< HEAD
 function TiltCard({ s }: { s: Skill }) {
   const ref = useRef<HTMLDivElement>(null);
 
   const rotX = useMotionValue(0);
   const rotY = useMotionValue(0);
-  const springRotX = useSpring(rotX, { stiffness: 200, damping: 20 });
-  const springRotY = useSpring(rotY, { stiffness: 200, damping: 20 });
-  const glowX = useMotionValue(50);
-  const glowY = useMotionValue(50);
 
-  const background = useTransform(
-    [glowX, glowY],
-    ([lx, ly]: number[]) =>
-      `radial-gradient(circle at ${lx}% ${ly}%, rgba(251,191,36,0.07) 0%, transparent 65%)`
-  );
+  const springX = useSpring(rotX, { stiffness: 200, damping: 20 });
+  const springY = useSpring(rotY, { stiffness: 200, damping: 20 });
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = ref.current!.getBoundingClientRect();
     const nx = (e.clientX - rect.left) / rect.width;
     const ny = (e.clientY - rect.top) / rect.height;
+
     rotX.set((ny - 0.5) * -10);
     rotY.set((nx - 0.5) * 10);
-    glowX.set(nx * 100);
-    glowY.set(ny * 100);
   };
 
   const onLeave = () => {
     rotX.set(0);
     rotY.set(0);
-    glowX.set(50);
-    glowY.set(50);
   };
 
   return (
@@ -170,37 +116,30 @@ function TiltCard({ s }: { s: Skill }) {
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       style={{
-        rotateX: springRotX,
-        rotateY: springRotY,
+        rotateX: springX,
+        rotateY: springY,
         transformStyle: 'preserve-3d',
-        transformPerspective: 600,
-        background,
       }}
-      whileHover={{ scale: 1.015 }}
-      transition={{ scale: { type: 'spring', stiffness: 300, damping: 22 } }}
-      className="relative bg-neutral-50 hover:bg-white active:bg-white transition-colors p-6 md:p-8 flex flex-col justify-between gap-8 md:gap-10 group overflow-hidden"
+      whileHover={{ scale: 1.02 }}
+      className="bg-neutral-50 hover:bg-white transition-colors p-8 flex flex-col justify-between gap-10 group"
     >
-      <span className="absolute left-0 top-0 h-px w-0 bg-amber-400 group-hover:w-full transition-all duration-700 ease-out" />
-
       <div className="flex items-start justify-between">
         <span className="text-xs uppercase tracking-[0.2em] text-neutral-400">
           {s.index} — {s.category}
         </span>
-        <s.Icon
-          className="w-5 h-5 text-neutral-400 group-hover:text-amber-500 transition-colors duration-300"
-          strokeWidth={1.25}
-        />
+        <s.Icon className="w-5 h-5 text-neutral-400 group-hover:text-black" />
       </div>
 
       <div>
-        <h3 className="text-xl md:text-2xl tracking-tight text-black mb-3">{s.title}</h3>
-        <p className="text-neutral-600 leading-relaxed text-sm mb-6">{s.description}</p>
-        <div className="flex flex-wrap gap-x-3 gap-y-2 pt-5 border-t border-neutral-200">
+        <h3 className="text-xl md:text-2xl tracking-tight text-black mb-3">
+          {s.title}
+        </h3>
+        <p className="text-neutral-600 text-sm mb-6">
+          {s.description}
+        </p>
+        <div className="flex flex-wrap gap-2 pt-5 border-t border-neutral-200">
           {s.tools.map((t) => (
-            <span
-              key={t}
-              className="text-xs text-neutral-500 group-hover:text-amber-600 transition-colors duration-300"
-            >
+            <span key={t} className="text-xs text-neutral-500">
               {t}
             </span>
           ))}
@@ -212,61 +151,21 @@ function TiltCard({ s }: { s: Skill }) {
 
 export function HorizontalBentoGrid() {
   return (
-    <section id="skills" className="bg-neutral-50 border-y border-neutral-200 px-6 md:px-10 py-16 md:py-32">
-      <div className="max-w-7xl mx-auto">
-
-        <div className="mb-12 md:mb-20">
-          <p className="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-3">— Capabilities (02)</p>
-          <h2 className="text-3xl md:text-6xl tracking-tight text-black">Skills, in detail.</h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200">
-          {skills.map((s) => (
-            <TiltCard key={s.id} s={s} />
-=======
-export function HorizontalBentoGrid() {
-  return (
     <section id="skills" className="bg-neutral-50 border-y border-neutral-200 px-6 md:px-10 py-24 md:py-32">
       <div className="max-w-7xl mx-auto">
 
-        {/* Header */}
         <div className="mb-16 md:mb-20">
-          <p className="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-3">— Capabilities (02)</p>
-          <h2 className="text-4xl md:text-6xl tracking-tight text-black">Skills, in detail.</h2>
+          <p className="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-3">
+            — Capabilities (02)
+          </p>
+          <h2 className="text-4xl md:text-6xl tracking-tight text-black">
+            Skills, in detail.
+          </h2>
         </div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200">
           {skills.map((s) => (
-            <article
-              key={s.id}
-              className="bg-neutral-50 hover:bg-white transition-colors p-8 flex flex-col justify-between gap-10 group"
-            >
-              <div className="flex items-start justify-between">
-                <span className="text-xs uppercase tracking-[0.2em] text-neutral-400">
-                  {s.index} — {s.category}
-                </span>
-                <s.Icon
-                  className="w-5 h-5 text-neutral-400 group-hover:text-black transition-colors"
-                  strokeWidth={1.25}
-                />
-              </div>
-
-              <div>
-                <h3 className="text-xl md:text-2xl tracking-tight text-black mb-3">
-                  {s.title}
-                </h3>
-                <p className="text-neutral-600 leading-relaxed text-sm mb-6">
-                  {s.description}
-                </p>
-                <div className="flex flex-wrap gap-x-3 gap-y-2 pt-5 border-t border-neutral-200">
-                  {s.tools.map((t) => (
-                    <span key={t} className="text-xs text-neutral-500">{t}</span>
-                  ))}
-                </div>
-              </div>
-            </article>
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
+            <TiltCard key={s.id} s={s} />
           ))}
         </div>
 
