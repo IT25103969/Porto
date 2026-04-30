@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValue, useSpring } from 'motion/react';
-=======
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
 import { Menu, X } from 'lucide-react';
 
 const links = [
@@ -14,7 +9,6 @@ const links = [
   { label: 'Contact', href: '#contact' },
 ];
 
-<<<<<<< HEAD
 function MagneticCTA({ href, children }: { href: string; children: React.ReactNode }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const mx = useMotionValue(0);
@@ -27,7 +21,11 @@ function MagneticCTA({ href, children }: { href: string; children: React.ReactNo
     mx.set((e.clientX - (rect.left + rect.width / 2)) * 0.38);
     my.set((e.clientY - (rect.top + rect.height / 2)) * 0.38);
   };
-  const onLeave = () => { mx.set(0); my.set(0); };
+
+  const onLeave = () => {
+    mx.set(0);
+    my.set(0);
+  };
 
   return (
     <motion.a
@@ -45,9 +43,12 @@ function MagneticCTA({ href, children }: { href: string; children: React.ReactNo
 
 function NavLink({ href, label }: { href: string; label: string }) {
   return (
-    <a href={href} className="group relative text-sm text-neutral-600 hover:text-black transition-colors py-1">
+    <a
+      href={href}
+      className="group relative text-sm text-neutral-600 hover:text-black transition-colors py-1"
+    >
       {label}
-      <span className="absolute left-0 -bottom-0.5 h-px bg-amber-400 w-0 group-hover:w-full transition-all duration-300 ease-out" />
+      <span className="absolute left-0 -bottom-0.5 h-px bg-amber-400 w-0 group-hover:w-full transition-all duration-300" />
     </a>
   );
 }
@@ -56,11 +57,6 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollYProgress } = useScroll();
-=======
-export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -68,13 +64,11 @@ export function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-<<<<<<< HEAD
-=======
-  // Lock body scroll when menu is open
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [open]);
 
   return (
@@ -84,15 +78,17 @@ export function Nav() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled || open ? 'bg-white/95 backdrop-blur-md border-b border-neutral-200' : 'bg-transparent'
+          scrolled || open
+            ? 'bg-white/95 backdrop-blur-md border-b border-neutral-200'
+            : 'bg-transparent'
         }`}
       >
-<<<<<<< HEAD
         <nav className="max-w-7xl mx-auto px-5 md:px-10 py-4 md:py-5 flex items-center justify-between">
           <a href="#top" className="tracking-tight text-black text-sm md:text-base" onClick={() => setOpen(false)}>
             Shihaz<span className="text-amber-400">/</span>Shaheem
           </a>
 
+          {/* Desktop */}
           <div className="hidden md:flex items-center gap-10">
             {links.map((l) => (
               <NavLink key={l.href} href={l.href} label={l.label} />
@@ -103,32 +99,7 @@ export function Nav() {
             <MagneticCTA href="#contact">Available for work</MagneticCTA>
 
             <button
-              className="md:hidden flex items-center justify-center w-10 h-10 text-black -mr-1"
-=======
-        <nav className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
-          <a href="#top" className="tracking-tight text-black" onClick={() => setOpen(false)}>
-            Shihaz<span className="text-neutral-400">/</span>Shaheem
-          </a>
-
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-10 text-sm text-neutral-600">
-            {links.map((l) => (
-              <a key={l.href} href={l.href} className="hover:text-black transition-colors">{l.label}</a>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-4">
-            <a
-              href="#contact"
-              className="hidden md:inline-flex text-sm border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors"
-            >
-              Available for work
-            </a>
-
-            {/* Hamburger */}
-            <button
-              className="md:hidden flex items-center justify-center w-9 h-9 text-black"
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
+              className="md:hidden flex items-center justify-center w-10 h-10"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
             >
@@ -136,7 +107,6 @@ export function Nav() {
             </button>
           </div>
         </nav>
-<<<<<<< HEAD
 
         <motion.div
           className="h-px bg-gradient-to-r from-neutral-900 via-amber-400 to-amber-300 origin-left"
@@ -144,11 +114,7 @@ export function Nav() {
         />
       </motion.header>
 
-=======
-      </motion.header>
-
-      {/* Mobile menu overlay */}
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
+      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -157,50 +123,31 @@ export function Nav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-<<<<<<< HEAD
             className="fixed inset-0 z-40 bg-white flex flex-col pt-20 px-6 pb-10 overflow-y-auto"
-=======
-            className="fixed inset-0 z-40 bg-white flex flex-col pt-24 px-6 pb-10"
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
           >
-            <div className="flex flex-col gap-1 flex-1">
+            <div className="flex flex-col flex-1">
               {links.map((l, i) => (
                 <motion.a
                   key={l.href}
                   href={l.href}
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * i, duration: 0.3 }}
+                  transition={{ delay: 0.05 * i }}
                   onClick={() => setOpen(false)}
-<<<<<<< HEAD
-                  className="text-[11vw] tracking-tight text-black border-b border-neutral-100 py-5 hover:text-amber-500 active:text-amber-500 transition-colors"
-=======
-                  className="text-5xl tracking-tight text-black border-b border-neutral-100 py-6 hover:text-neutral-500 transition-colors"
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
+                  className="text-[11vw] text-black border-b border-neutral-100 py-5 hover:text-amber-500"
                 >
                   {l.label}
                 </motion.a>
               ))}
             </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="mt-8"
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="w-full inline-flex justify-center border border-black px-6 py-4 text-sm uppercase tracking-[0.15em] hover:bg-black hover:text-white"
             >
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-<<<<<<< HEAD
-                className="w-full inline-flex items-center justify-center border border-black px-6 py-4 text-sm uppercase tracking-[0.15em] hover:bg-black hover:text-white active:bg-black active:text-white transition-colors"
-=======
-                className="w-full inline-flex items-center justify-center border border-black px-6 py-4 text-sm uppercase tracking-[0.15em] hover:bg-black hover:text-white transition-colors"
->>>>>>> 9bb38d76a99280a5cf032917e1cc53d16f22cc9c
-              >
-                Available for work
-              </a>
-            </motion.div>
+              Available for work
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
